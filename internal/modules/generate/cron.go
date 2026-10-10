@@ -11,7 +11,7 @@ import (
 type cronField struct {
 	name     string
 	min, max int
-	names    []string // names[i] is the alias of value min+i
+	names    []string
 }
 
 var cronFields = []cronField{
@@ -33,7 +33,7 @@ var cronMacros = map[string]string{
 }
 
 type cronSpec struct {
-	sets             [5]uint64 // bit v set = value v allowed
+	sets             [5]uint64
 	domStar, dowStar bool
 }
 
@@ -96,7 +96,7 @@ func parseCron(expr string) (cronSpec, error) {
 		}
 		s.sets[i] = set
 	}
-	if s.sets[4]&(1<<7) != 0 { // 7 is Sunday too
+	if s.sets[4]&(1<<7) != 0 {
 		s.sets[4] = s.sets[4]&^(1<<7) | 1
 	}
 	s.domStar, s.dowStar = strings.HasPrefix(parts[2], "*"), strings.HasPrefix(parts[4], "*")
@@ -128,7 +128,7 @@ func parseField(s string, f cronField) (uint64, error) {
 					return 0, err
 				}
 			} else if hasStep {
-				hi = f.max // "5/15" means 5-max/15
+				hi = f.max
 			}
 			if lo > hi {
 				return 0, errors.New("range " + strconv.Quote(rng) + " is reversed")
@@ -175,7 +175,6 @@ func describe(set uint64, f cronField) string {
 	return strings.Join(vals, ", ")
 }
 
-// next returns the first matching minute after t, skipping whole months, days and hours that cannot match.
 func (s cronSpec) next(t time.Time) (time.Time, error) {
 	loc := t.Location()
 	limit := t.AddDate(5, 0, 0)
@@ -197,7 +196,6 @@ func (s cronSpec) next(t time.Time) (time.Time, error) {
 	return time.Time{}, errors.New("no run time in the next 5 years")
 }
 
-// dayMatches follows cron: when both day fields are restricted, either one matching is enough.
 func (s cronSpec) dayMatches(t time.Time) bool {
 	dom, dow := s.sets[2]&(1<<t.Day()) != 0, s.sets[4]&(1<<int(t.Weekday())) != 0
 	if s.domStar || s.dowStar {

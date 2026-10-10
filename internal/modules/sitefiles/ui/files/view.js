@@ -24,7 +24,6 @@ customElements.define(
           meta.append(` · ${(f.body.match(/<loc>/g) || []).length} URLs`);
         }
         d.append(h, meta);
-        // Many sites answer missing files with their HTML error page and a 200 status.
         const html = f.content_type?.startsWith('text/html');
         if (f.error) d.append(el('p', 'error', f.error));
         else if (html) d.append(el('p', 'warn', 'Not found: the site returned an HTML page.'));

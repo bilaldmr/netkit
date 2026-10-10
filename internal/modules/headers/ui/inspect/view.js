@@ -42,7 +42,6 @@ const recommended = [
 const grades = ['F', 'F', 'F', 'D', 'C', 'B', 'A'];
 const inGroup = (g, h) => groups[g].some((m) => (typeof m === 'string' ? m === h : m(h)));
 
-// Long policy headers are lists; one directive per line reads better.
 const pretty = (k, v) => {
   k = k.toLowerCase();
   if (k.startsWith('content-security-policy'))
@@ -55,7 +54,6 @@ const pretty = (k, v) => {
   return v;
 };
 
-// Set-Cookie arrives one cookie per line; report which protective attributes each one sets.
 function cookieTable(setCookie) {
   const t = el('table', 'data'),
     head = el('tr');

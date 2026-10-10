@@ -11,7 +11,7 @@ import (
 )
 
 type Prober interface {
-	Probe(ctx context.Context, host, port string) (tls.ConnectionState, error)
+	Probe(ctx context.Context, host, port string, cfg *tls.Config) (tls.ConnectionState, error)
 }
 
 type Cert struct {
@@ -35,16 +35,11 @@ type Report struct {
 type Service struct{ Prober Prober }
 
 func (s Service) Check(ctx context.Context, target string) (Report, error) {
-	target = strings.TrimPrefix(strings.TrimPrefix(target, "https://"), "http://")
-	target, _, _ = strings.Cut(target, "/")
-	if target == "" {
-		return Report{}, errors.New("host required")
-	}
-	host, port, err := net.SplitHostPort(target)
+	host, port, err := splitTarget(target)
 	if err != nil {
-		host, port = target, "443"
+		return Report{}, err
 	}
-	st, err := s.Prober.Probe(ctx, host, port)
+	st, err := s.Prober.Probe(ctx, host, port, &tls.Config{})
 	if err != nil {
 		return Report{}, err
 	}
@@ -70,4 +65,16 @@ func (s Service) Check(ctx context.Context, target string) (Report, error) {
 		rep.Chain = append(rep.Chain, Cert{c.Subject.String(), c.Issuer.String(), c.NotBefore, c.NotAfter, c.DNSNames})
 	}
 	return rep, nil
+}
+
+func splitTarget(target string) (host, port string, err error) {
+	target = strings.TrimPrefix(strings.TrimPrefix(strings.TrimSpace(target), "https://"), "http://")
+	target, _, _ = strings.Cut(target, "/")
+	if target == "" {
+		return "", "", errors.New("host required")
+	}
+	if host, port, err := net.SplitHostPort(target); err == nil {
+		return host, port, nil
+	}
+	return target, "443", nil
 }

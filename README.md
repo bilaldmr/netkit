@@ -18,7 +18,7 @@ Standard library only, no external dependencies.
 | Port Checker     | `/ports`         | Open TCP ports of a public host (up to 20 per check)                    |
 | Redirect Checker | `/redirects`     | Redirect chain hop by hop (max 10)                                      |
 | Site Files       | `/site-files`    | robots.txt, sitemap.xml, security.txt and llms.txt                      |
-| SSL Checker      | `/ssl`           | TLS certificate validity, days left, version and chain                  |
+| SSL Checker      | `/ssl`           | Certificate check, supported TLS versions and ciphers, two-host compare |
 | WHOIS / RDAP     | `/whois`         | Registration data for a domain, IP or ASN                               |
 
 `GET /api` lists every module with its endpoints and an example request.

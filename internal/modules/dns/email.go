@@ -7,7 +7,6 @@ import (
 	"strings"
 )
 
-// DKIMSelectors are tried when no selector is given; DKIM keys can only be found by name.
 var DKIMSelectors = []string{"default", "google", "selector1", "selector2", "k1", "s1", "s2", "dkim", "mail"}
 
 type Policy struct {
@@ -55,7 +54,6 @@ func (s Service) Email(ctx context.Context, domain, selector string) (Email, err
 		e.DMARC = checkDMARC(dmarc[0])
 	}
 
-	// ponytail: sequential lookups, run them concurrently if many selectors are added
 	for _, sel := range e.DKIMSelector {
 		for _, rec := range s.txt(ctx, sel+"._domainkey."+domain, "") {
 			if strings.Contains(rec, "p=") {
@@ -66,7 +64,6 @@ func (s Service) Email(ctx context.Context, domain, selector string) (Email, err
 	return e, nil
 }
 
-// txt returns TXT records of name that start with prefix (case-insensitive); lookup errors mean none.
 func (s Service) txt(ctx context.Context, name, prefix string) []string {
 	recs, _ := s.Resolver.LookupTXT(ctx, name)
 	var out []string
@@ -105,7 +102,6 @@ func checkSPF(rec string) Policy {
 			p.Issues = append(p.Issues, "no all mechanism; add ~all or -all")
 		}
 	}
-	// ponytail: counts top-level terms only; nested includes can push the real total higher
 	if lookups > 10 {
 		p.Issues = append(p.Issues, strconv.Itoa(lookups)+" DNS lookups; SPF allows at most 10")
 	}

@@ -1,0 +1,14 @@
+<form>
+  <label>
+    Host
+    <input name="host" placeholder="api.example.com or host:port" required />
+  </label>
+  <label>
+    Compare with
+    <input name="compare" placeholder="optional second host" />
+  </label>
+  <button>Scan</button>
+</form>
+<p class="muted">
+  Each TLS version and cipher is tried in a separate handshake, so a scan takes a few seconds.
+</p>
