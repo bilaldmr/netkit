@@ -87,7 +87,7 @@ func NewServer(d Deps, factories ...Factory) http.Handler {
 	mux.Handle("GET /ui/kit.js", script(kitJS))
 	mux.Handle("GET /{$}", render(page{"Toolset", nil, "/", "Network and developer tools. Every tool has a JSON API too, see /api.", "", mods}))
 	mux.HandleFunc("GET /api", func(w http.ResponseWriter, r *http.Request) { Reply(w, mods, nil) })
-	return noIndex(mux)
+	return defaultHeaders(mux)
 }
 
 func component(mod, dir string, ui fs.FS, shared []byte) template.HTML {
@@ -103,9 +103,13 @@ func component(mod, dir string, ui fs.FS, shared []byte) template.HTML {
 		"</template></" + tag + `><script type="module" src="/ui/` + mod + "/" + dir + `/view.js"></script>`)
 }
 
-func noIndex(h http.Handler) http.Handler {
+func defaultHeaders(h http.Handler) http.Handler {
 	return http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
-		w.Header().Set("X-Robots-Tag", "noindex, nofollow")
+		hd := w.Header()
+		hd.Set("X-Robots-Tag", "noindex, nofollow")
+		hd.Set("Cache-Control", "no-store, no-cache, must-revalidate, max-age=0")
+		hd.Set("Pragma", "no-cache")
+		hd.Set("Expires", "0")
 		h.ServeHTTP(w, r)
 	})
 }
