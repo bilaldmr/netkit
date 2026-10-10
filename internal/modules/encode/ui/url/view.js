@@ -1,7 +1,7 @@
 import { ToolElement, kv } from '/ui/kit.js';
 
 customElements.define('tool-encode-url', class extends ToolElement {
-  static api = '/api/encode/url';
+  static api = '/api/encode-decode/url';
   static post = true;
 
   render(v) {

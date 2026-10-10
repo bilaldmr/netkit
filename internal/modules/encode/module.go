@@ -18,16 +18,16 @@ func New(_ platform.Deps) platform.Module {
 		Description: "Base64, URL encoding, JWT decoding and hashes. Input is sent in the request body, never in the URL.",
 		UI:          ui,
 		Views: []platform.View{
-			{Path: "/encode", Dir: "base64", Title: "Base64"},
-			{Path: "/encode/url", Dir: "url", Title: "URL"},
-			{Path: "/encode/jwt", Dir: "jwt", Title: "JWT"},
-			{Path: "/encode/hash", Dir: "hash", Title: "Hash"},
+			{Path: "/encode-decode", Dir: "base64", Title: "Base64"},
+			{Path: "/encode-decode/url", Dir: "url", Title: "URL"},
+			{Path: "/encode-decode/jwt", Dir: "jwt", Title: "JWT"},
+			{Path: "/encode-decode/hash", Dir: "hash", Title: "Hash"},
 		},
 		Routes: []platform.Route{
-			{Pattern: "POST /api/encode/base64", Example: `{"input":"hello","mode":"encode","url_safe":"false"}`, Handler: PostBase64},
-			{Pattern: "POST /api/encode/url", Example: `{"input":"a b&c","mode":"encode"}`, Handler: PostURL},
-			{Pattern: "POST /api/encode/jwt", Example: `{"token":"eyJ..."}`, Handler: PostJWT},
-			{Pattern: "POST /api/encode/hash", Example: `{"input":"hello"}`, Handler: PostHash},
+			{Pattern: "POST /api/encode-decode/base64", Example: `{"input":"hello","mode":"encode","url_safe":"false"}`, Handler: PostBase64},
+			{Pattern: "POST /api/encode-decode/url", Example: `{"input":"a b&c","mode":"encode"}`, Handler: PostURL},
+			{Pattern: "POST /api/encode-decode/jwt", Example: `{"token":"eyJ..."}`, Handler: PostJWT},
+			{Pattern: "POST /api/encode-decode/hash", Example: `{"input":"hello"}`, Handler: PostHash},
 		},
 	}
 }

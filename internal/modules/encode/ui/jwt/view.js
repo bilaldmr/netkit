@@ -1,7 +1,7 @@
 import { ToolElement, el, kv, tree } from '/ui/kit.js';
 
 customElements.define('tool-encode-jwt', class extends ToolElement {
-  static api = '/api/encode/jwt';
+  static api = '/api/encode-decode/jwt';
   static post = true;
 
   render(v) {
