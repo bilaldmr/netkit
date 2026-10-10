@@ -1,4 +1,4 @@
-import { el } from '/ui/kit.js';
+import { el } from '/static/kit.js';
 
 export function copyList(items) {
   const ul = el('ul', 'list');

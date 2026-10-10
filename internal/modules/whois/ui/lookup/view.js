@@ -1,4 +1,4 @@
-import { ToolElement, el, kv, tree } from '/ui/kit.js';
+import { ToolElement, el, kv, tree } from '/static/kit.js';
 
 const date = s => (s ? s.slice(0, 10) : '');
 

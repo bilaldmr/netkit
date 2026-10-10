@@ -1,4 +1,4 @@
-import { ToolElement, el } from '/ui/kit.js';
+import { ToolElement, el } from '/static/kit.js';
 
 customElements.define('tool-dns-propagation', class extends ToolElement {
   static api = '/api/dns/propagation';

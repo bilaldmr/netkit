@@ -1,4 +1,4 @@
-import { ToolElement, el, api } from '/ui/kit.js';
+import { ToolElement, el, api } from '/static/kit.js';
 
 customElements.define('tool-myip-info', class extends ToolElement {
   async setup() {

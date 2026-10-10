@@ -1,4 +1,4 @@
-import { ToolElement, el } from '/ui/kit.js';
+import { ToolElement, el } from '/static/kit.js';
 
 const badge = { open: 'ok', closed: 'muted', filtered: 'warn', error: 'bad' };
 

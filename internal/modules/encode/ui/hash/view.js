@@ -1,4 +1,4 @@
-import { ToolElement, kv } from '/ui/kit.js';
+import { ToolElement, kv } from '/static/kit.js';
 
 customElements.define('tool-encode-hash', class extends ToolElement {
   static api = '/api/encode-decode/hash';

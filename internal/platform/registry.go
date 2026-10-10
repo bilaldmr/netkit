@@ -2,12 +2,13 @@ package platform
 
 import (
 	"bytes"
-	_ "embed"
 	"html/template"
 	"io/fs"
 	"net/http"
 	"sort"
 	"time"
+
+	"github.com/enteresanlikk/go-toolset/web"
 )
 
 type Module struct {
@@ -33,16 +34,15 @@ type Route struct {
 
 type Factory func(Deps) Module
 
-//go:embed layout.html
-var layoutHTML string
+var layout = template.Must(template.New("layout").Parse(web.Layout))
 
-//go:embed kit.js
-var kitJS []byte
-
-//go:embed kit.css
-var kitCSS string
-
-var layout = template.Must(template.New("layout").Parse(layoutHTML))
+var kitCSS = func() string {
+	b, err := fs.ReadFile(web.StaticFS, "kit.css")
+	if err != nil {
+		panic(err)
+	}
+	return string(b)
+}()
 
 type page struct {
 	Title       string
@@ -84,7 +84,7 @@ func NewServer(d Deps, factories ...Factory) http.Handler {
 			mux.Handle("GET "+v.Path, render(page{title, m, v.Path, m.Description, component(m.Name, v.Dir, ui, shared), mods}))
 		}
 	}
-	mux.Handle("GET /ui/kit.js", script(kitJS))
+	mux.Handle("GET "+web.StaticPrefix, http.StripPrefix(web.StaticPrefix, http.FileServerFS(web.StaticFS)))
 	mux.Handle("GET /{$}", render(page{"Toolset", nil, "/", "Network and developer tools. Every tool has a JSON API too, see /api.", "", mods}))
 	mux.HandleFunc("GET /api", func(w http.ResponseWriter, r *http.Request) { Reply(w, mods, nil) })
 	return defaultHeaders(mux)
@@ -112,13 +112,6 @@ func defaultHeaders(h http.Handler) http.Handler {
 		hd.Set("Expires", "0")
 		h.ServeHTTP(w, r)
 	})
-}
-
-func script(js []byte) http.HandlerFunc {
-	return func(w http.ResponseWriter, r *http.Request) {
-		w.Header().Set("Content-Type", "text/javascript; charset=utf-8")
-		w.Write(js)
-	}
 }
 
 func render(p page) http.HandlerFunc {

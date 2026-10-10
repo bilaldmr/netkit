@@ -69,6 +69,7 @@ export class ToolElement extends HTMLElement {
       return;
     }
     const q = new URLSearchParams(location.search);
+    const url = p => (p.size ? `${path}?${p}` : path);
     const fields = () => {
       const p = new URLSearchParams();
       if (form) for (const [k, v] of new FormData(form)) if (v) p.set(k, v);
@@ -80,10 +81,10 @@ export class ToolElement extends HTMLElement {
         e.preventDefault();
         const p = fields();
         history.replaceState(null, '', p.size ? '?' + p : location.pathname);
-        this.load(`${path}?${p}`);
+        this.load(url(p));
       };
     }
-    if (auto || q.size) this.load(`${path}?${fields()}`);
+    if (auto || q.size) this.load(url(fields()));
   }
 
   async load(url, init) {
