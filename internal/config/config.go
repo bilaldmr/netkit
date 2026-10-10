@@ -3,10 +3,10 @@ package config
 import (
 	"os"
 
-	"github.com/enteresanlikk/go-toolset/internal/logger"
-	"github.com/enteresanlikk/go-toolset/internal/modules/ipcheck"
-	"github.com/enteresanlikk/go-toolset/internal/modules/myip"
-	"github.com/enteresanlikk/go-toolset/internal/server"
+	"github.com/enteresanlikk/go-toolkit/internal/logger"
+	"github.com/enteresanlikk/go-toolkit/internal/modules/ipcheck"
+	"github.com/enteresanlikk/go-toolkit/internal/modules/myip"
+	"github.com/enteresanlikk/go-toolkit/internal/server"
 )
 
 type Config struct {

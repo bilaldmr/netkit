@@ -7,7 +7,7 @@ import (
 	"net"
 	"net/http"
 
-	"github.com/enteresanlikk/go-toolset/internal/platform"
+	"github.com/enteresanlikk/go-toolkit/internal/platform"
 )
 
 type tlsProber struct{ dialer *net.Dialer }

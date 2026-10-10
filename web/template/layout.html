@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="robots" content="noindex, nofollow">
-<title>{{.Title}}{{if .Mod}} · Toolset{{end}}</title>
+<title>{{.Title}}{{if .Mod}} · Toolkit{{end}}</title>
 <link rel="stylesheet" href="{{asset "css/tokens.css"}}">
 <link rel="stylesheet" href="{{asset "css/app.css"}}">
 <script src="{{asset "js/app.js"}}" defer></script>
@@ -13,7 +13,7 @@
 <a class="skip" href="#content">Skip to content</a>
 <div class="shell">
   <aside class="sidebar">
-    <a class="brand" href="/"><span class="brand-mark" aria-hidden="true">T</span>Toolset</a>
+    <a class="brand" href="/"><span class="brand-mark" aria-hidden="true">T</span>Toolkit</a>
     <nav aria-label="Tools">
       <ul>
         {{range .Mods}}{{if .Views}}<li><a class="nav" href="{{(index .Views 0).Path}}"{{if $.Mod}}{{if eq .Name $.Mod.Name}} aria-current="page"{{end}}{{end}}>{{.Title}}</a></li>

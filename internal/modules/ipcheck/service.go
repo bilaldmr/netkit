@@ -4,7 +4,7 @@ import (
 	"context"
 	"net/netip"
 
-	"github.com/enteresanlikk/go-toolset/internal/platform"
+	"github.com/enteresanlikk/go-toolkit/internal/platform"
 )
 
 type ReverseResolver interface {

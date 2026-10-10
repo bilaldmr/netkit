@@ -14,7 +14,7 @@ permissions:
 
 env:
   REGISTRY: ghcr.io
-  IMAGE_NAME: go-toolset
+  IMAGE_NAME: go-toolkit
 
 jobs:
   verify:
@@ -118,6 +118,6 @@ jobs:
 
             export VERSION="${{ env.IMAGE_TAG }}"
 
-            ./scripts/deploy.sh service go-toolset
+            ./scripts/deploy.sh service go-toolkit
 
             docker stack services personal-${{ env.ENVIRONMENT }}

@@ -1,8 +1,8 @@
-name: go-toolset
+name: go-toolkit
 
 services:
   server:
-    container_name: go-toolset-server
+    container_name: go-toolkit-server
     build:
       context: .
       dockerfile: Dockerfile

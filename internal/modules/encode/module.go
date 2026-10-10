@@ -5,7 +5,7 @@ import (
 	"net/http"
 	"time"
 
-	"github.com/enteresanlikk/go-toolset/internal/platform"
+	"github.com/enteresanlikk/go-toolkit/internal/platform"
 )
 
 //go:embed ui
