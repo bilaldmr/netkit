@@ -1,0 +1,10 @@
+import { ToolElement, kv } from '/ui/kit.js';
+
+customElements.define('tool-encode-url', class extends ToolElement {
+  static api = '/api/encode/url';
+  static post = true;
+
+  render(v) {
+    return kv([['Query component', v.query], ['Path segment', v.path], ['Decoded', v.text]]);
+  }
+});
