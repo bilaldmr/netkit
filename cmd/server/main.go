@@ -10,12 +10,17 @@ import (
 
 	"github.com/enteresanlikk/go-toolset/internal/config"
 	"github.com/enteresanlikk/go-toolset/internal/logger"
+	"github.com/enteresanlikk/go-toolset/internal/modules/cidr"
 	"github.com/enteresanlikk/go-toolset/internal/modules/dns"
+	"github.com/enteresanlikk/go-toolset/internal/modules/encode"
+	"github.com/enteresanlikk/go-toolset/internal/modules/generate"
 	"github.com/enteresanlikk/go-toolset/internal/modules/ipcheck"
 	"github.com/enteresanlikk/go-toolset/internal/modules/jsonview"
 	"github.com/enteresanlikk/go-toolset/internal/modules/myip"
+	"github.com/enteresanlikk/go-toolset/internal/modules/ports"
 	"github.com/enteresanlikk/go-toolset/internal/modules/redirects"
 	"github.com/enteresanlikk/go-toolset/internal/modules/ssl"
+	"github.com/enteresanlikk/go-toolset/internal/modules/whois"
 	"github.com/enteresanlikk/go-toolset/internal/platform"
 	"github.com/enteresanlikk/go-toolset/internal/server"
 )
@@ -34,12 +39,17 @@ func main() {
 
 func run(l *slog.Logger, cfg config.Config) error {
 	routes := platform.NewServer(platform.NewDeps(),
+		cidr.New,
 		dns.New,
+		encode.New,
+		generate.New,
 		ipcheck.New(cfg.IPCheck),
 		jsonview.New,
 		myip.New(cfg.MyIP),
+		ports.New,
 		redirects.New,
 		ssl.New,
+		whois.New,
 	)
 	httpServer := server.New(l, cfg.HTTPServer, routes)
 

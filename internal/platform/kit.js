@@ -28,9 +28,23 @@ export async function api(url, init) {
   return v;
 }
 
+export function kv(rows) {
+  const t = el('table', 'kv');
+  for (const [k, v] of rows) {
+    if (v == null || v === '' || (Array.isArray(v) && !v.length)) continue;
+    const tr = el('tr'), td = el('td');
+    if (v instanceof Node) td.append(v);
+    else td.textContent = Array.isArray(v) ? v.join('\n') : String(v);
+    tr.append(el('th', null, k), td);
+    t.append(tr);
+  }
+  return t;
+}
+
 export class ToolElement extends HTMLElement {
   static api = '';
   static auto = false;
+  static post = false;
 
   connectedCallback() {
     if (this.out) return;
@@ -43,18 +57,33 @@ export class ToolElement extends HTMLElement {
 
   setup() {
     const { api: path, auto } = this.constructor, form = this.formEl;
+    if (this.constructor.post) {
+      if (form) form.onsubmit = e => {
+        e.preventDefault();
+        this.load(path, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(Object.fromEntries(new FormData(form))),
+        });
+      };
+      return;
+    }
     const q = new URLSearchParams(location.search);
+    const fields = () => {
+      const p = new URLSearchParams();
+      if (form) for (const [k, v] of new FormData(form)) if (v) p.set(k, v);
+      return p;
+    };
     if (form) {
-      for (const [k, v] of q) if (form.elements[k]) form.elements[k].value = v;
+      for (const [k, v] of q) { const f = form.elements.namedItem(k); if (f) f.value = v; }
       form.onsubmit = e => {
         e.preventDefault();
-        const p = new URLSearchParams();
-        for (const [k, v] of new FormData(form)) if (v) p.set(k, v);
+        const p = fields();
         history.replaceState(null, '', p.size ? '?' + p : location.pathname);
         this.load(`${path}?${p}`);
       };
     }
-    if (auto || q.size) this.load(`${path}?${q}`);
+    if (auto || q.size) this.load(`${path}?${fields()}`);
   }
 
   async load(url, init) {

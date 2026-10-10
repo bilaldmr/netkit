@@ -18,3 +18,7 @@ h2 { font-size: 17px; margin: 20px 0 8px; }
 .tree details { padding-left: 16px; } .tree summary { margin-left: -16px; cursor: pointer; }
 .tree .leaf { padding-left: 16px; white-space: pre-wrap; word-break: break-all; }
 .k { color: var(--key); } .t-s { color: var(--str); } .t-n { color: var(--num); } .t-b { color: var(--bool); } .t-z { color: var(--null); }
+table.kv { border-collapse: collapse; margin: 12px 0; width: 100%; }
+table.kv th, table.kv td { text-align: left; vertical-align: top; padding: 5px 12px 5px 0; border-bottom: 1px solid var(--line); }
+table.kv th { color: var(--muted); font-weight: 600; font-size: 13px; white-space: nowrap; width: 1%; }
+table.kv td { white-space: pre-wrap; word-break: break-all; font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 13px; }

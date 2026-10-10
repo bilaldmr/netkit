@@ -2,6 +2,7 @@ package platform
 
 import (
 	"encoding/json"
+	"io"
 	"net"
 	"net/http"
 	"strings"
@@ -17,6 +18,10 @@ func Reply(w http.ResponseWriter, v any, err error) {
 	enc.SetIndent("", "  ")
 	enc.SetEscapeHTML(false)
 	enc.Encode(v)
+}
+
+func DecodeJSON(r *http.Request, v any) error {
+	return json.NewDecoder(io.LimitReader(r.Body, 1<<20)).Decode(v)
 }
 
 func ClientIP(r *http.Request) string {
