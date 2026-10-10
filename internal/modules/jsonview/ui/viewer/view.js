@@ -1,4 +1,4 @@
-import { ToolElement } from '/static/kit.js';
+import { ToolElement } from '/static/js/kit.js';
 
 customElements.define('tool-jsonview-viewer', class extends ToolElement {
   setup() {

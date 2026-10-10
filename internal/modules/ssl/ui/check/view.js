@@ -1,4 +1,4 @@
-import { ToolElement, el, tree } from '/static/kit.js';
+import { ToolElement, el, tree } from '/static/js/kit.js';
 
 customElements.define('tool-ssl-check', class extends ToolElement {
   static api = '/api/ssl';

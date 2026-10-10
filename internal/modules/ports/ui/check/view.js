@@ -1,4 +1,4 @@
-import { ToolElement, el } from '/static/kit.js';
+import { ToolElement, el } from '/static/js/kit.js';
 
 const badge = { open: 'ok', closed: 'muted', filtered: 'warn', error: 'bad' };
 
@@ -9,7 +9,7 @@ customElements.define('tool-ports-check', class extends ToolElement {
     const d = el('div');
     const open = v.results.filter(r => r.state === 'open').length;
     d.append(el('p', 'muted', `${v.host} (${v.address}): ${open} of ${v.results.length} ports open`));
-    const table = el('table'), head = el('tr');
+    const table = el('table', 'data'), head = el('tr');
     for (const h of ['Port', 'Service', 'State', 'Latency']) head.append(el('th', null, h));
     table.append(head);
     for (const r of v.results) {

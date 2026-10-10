@@ -1,4 +1,4 @@
-import { ToolElement, el, kv } from '/static/kit.js';
+import { ToolElement, el, kv } from '/static/js/kit.js';
 
 customElements.define('tool-cidr-calc', class extends ToolElement {
   static api = '/api/cidr';

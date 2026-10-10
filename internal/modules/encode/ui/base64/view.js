@@ -1,4 +1,4 @@
-import { ToolElement, kv } from '/static/kit.js';
+import { ToolElement, kv } from '/static/js/kit.js';
 
 customElements.define('tool-encode-base64', class extends ToolElement {
   static api = '/api/encode-decode/base64';

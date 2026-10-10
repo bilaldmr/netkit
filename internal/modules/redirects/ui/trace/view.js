@@ -1,4 +1,4 @@
-import { ToolElement, el } from '/static/kit.js';
+import { ToolElement, el } from '/static/js/kit.js';
 
 customElements.define('tool-redirects-trace', class extends ToolElement {
   static api = '/api/redirects';

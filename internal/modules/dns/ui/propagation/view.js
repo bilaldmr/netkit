@@ -1,4 +1,4 @@
-import { ToolElement, el } from '/static/kit.js';
+import { ToolElement, el } from '/static/js/kit.js';
 
 customElements.define('tool-dns-propagation', class extends ToolElement {
   static api = '/api/dns/propagation';
@@ -15,7 +15,7 @@ customElements.define('tool-dns-propagation', class extends ToolElement {
         'Large sites and CDNs also return different IPs per resolver on purpose (geo DNS), so mixed results are normal there.'));
     }
 
-    const table = el('table'), head = el('tr');
+    const table = el('table', 'data'), head = el('tr');
     for (const h of ['Server', 'Country', 'Answer', 'Status']) head.append(el('th', null, h));
     table.append(head);
     for (const a of v.answers) {

@@ -34,10 +34,10 @@ type Route struct {
 
 type Factory func(Deps) Module
 
-var layout = template.Must(template.New("layout").Parse(web.Layout))
+var layout = template.Must(template.New("layout").Funcs(template.FuncMap{"asset": web.Asset}).Parse(web.Layout))
 
 var kitCSS = func() string {
-	b, err := fs.ReadFile(web.StaticFS, "kit.css")
+	b, err := fs.ReadFile(web.StaticFS, "css/kit.css")
 	if err != nil {
 		panic(err)
 	}

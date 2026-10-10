@@ -1,0 +1,142 @@
+:root {
+  --yellow-50: #fefce8;
+  --yellow-100: #fef9c3;
+  --yellow-200: #fef08a;
+  --yellow-300: #fde047;
+  --yellow-400: #facc15;
+  --yellow-500: #eab308;
+  --yellow-600: #ca8a04;
+  --yellow-700: #a16207;
+  --yellow-800: #854d0e;
+  --yellow-900: #713f12;
+  --yellow-950: #422006;
+
+  --stone-0: #ffffff;
+  --stone-50: #fafaf9;
+  --stone-100: #f5f5f4;
+  --stone-200: #e7e5e4;
+  --stone-300: #d6d3d1;
+  --stone-400: #a8a29e;
+  --stone-500: #78716c;
+  --stone-600: #57534e;
+  --stone-700: #44403c;
+  --stone-800: #292524;
+  --stone-900: #1c1917;
+  --stone-950: #0c0a09;
+
+  --green-400: #4ade80;
+  --green-700: #15803d;
+  --orange-400: #fb923c;
+  --orange-700: #c2410c;
+  --red-400: #f87171;
+  --red-700: #b91c1c;
+  --blue-300: #93c5fd;
+  --blue-400: #60a5fa;
+  --blue-700: #1d4ed8;
+  --blue-800: #1e40af;
+  --violet-300: #c4b5fd;
+  --violet-700: #6d28d9;
+
+  --font-sans: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  --font-mono: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  --text-xs: 12px;
+  --text-sm: 13px;
+  --text-md: 15px;
+  --text-lg: 17px;
+  --text-xl: 26px;
+  --text-2xl: 30px;
+  --weight-medium: 500;
+  --weight-semibold: 600;
+  --weight-bold: 750;
+  --leading: 1.5;
+
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-5: 24px;
+  --space-6: 32px;
+  --space-7: 48px;
+
+  --radius-sm: 6px;
+  --radius-md: 10px;
+  --radius-lg: 14px;
+  --radius-full: 999px;
+
+  --sidebar-width: 248px;
+  --content-max: 960px;
+
+  --color-bg: var(--stone-50);
+  --color-surface: var(--stone-0);
+  --color-surface-muted: var(--stone-100);
+  --color-border: var(--stone-200);
+  --color-border-strong: var(--stone-300);
+  --color-text: var(--stone-900);
+  --color-text-muted: var(--stone-500);
+
+  --color-accent: var(--yellow-400);
+  --color-accent-hover: var(--yellow-300);
+  --color-accent-soft: var(--yellow-100);
+  --color-accent-text: var(--yellow-700);
+  --color-on-accent: var(--stone-900);
+  --color-focus: var(--yellow-500);
+
+  --color-sidebar: var(--yellow-400);
+  --color-sidebar-border: var(--yellow-500);
+  --color-sidebar-text: var(--stone-900);
+  --color-sidebar-hover: var(--yellow-300);
+  --color-sidebar-active-bg: var(--stone-900);
+  --color-sidebar-active-text: var(--yellow-300);
+  --color-brand-mark-bg: var(--stone-900);
+  --color-brand-mark-text: var(--yellow-400);
+
+  --color-success: var(--green-700);
+  --color-warning: var(--orange-700);
+  --color-danger: var(--red-700);
+  --color-info: var(--blue-700);
+
+  --color-syntax-key: var(--yellow-800);
+  --color-syntax-string: var(--blue-800);
+  --color-syntax-number: var(--violet-700);
+  --color-syntax-boolean: var(--orange-700);
+  --color-syntax-null: var(--stone-500);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --color-bg: var(--stone-950);
+    --color-surface: var(--stone-900);
+    --color-surface-muted: var(--stone-800);
+    --color-border: var(--stone-800);
+    --color-border-strong: var(--stone-700);
+    --color-text: var(--stone-100);
+    --color-text-muted: var(--stone-400);
+
+    --color-accent: var(--yellow-400);
+    --color-accent-hover: var(--yellow-300);
+    --color-accent-soft: var(--yellow-950);
+    --color-accent-text: var(--yellow-300);
+    --color-on-accent: var(--stone-950);
+    --color-focus: var(--yellow-400);
+
+    --color-sidebar: var(--stone-900);
+    --color-sidebar-border: var(--stone-800);
+    --color-sidebar-text: var(--stone-300);
+    --color-sidebar-hover: var(--stone-800);
+    --color-sidebar-active-bg: var(--yellow-400);
+    --color-sidebar-active-text: var(--stone-950);
+    --color-brand-mark-bg: var(--yellow-400);
+    --color-brand-mark-text: var(--stone-950);
+
+    --color-success: var(--green-400);
+    --color-warning: var(--orange-400);
+    --color-danger: var(--red-400);
+    --color-info: var(--blue-400);
+
+    --color-syntax-key: var(--yellow-300);
+    --color-syntax-string: var(--blue-300);
+    --color-syntax-number: var(--violet-300);
+    --color-syntax-boolean: var(--orange-400);
+    --color-syntax-null: var(--stone-400);
+  }
+}

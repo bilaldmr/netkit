@@ -1,4 +1,4 @@
-import { ToolElement, el, kv, tree } from '/static/kit.js';
+import { ToolElement, el, kv, tree } from '/static/js/kit.js';
 
 customElements.define('tool-encode-jwt', class extends ToolElement {
   static api = '/api/encode-decode/jwt';
