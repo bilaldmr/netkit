@@ -87,7 +87,7 @@ func NewServer(d Deps, factories ...Factory) http.Handler {
 	mux.Handle("GET /ui/kit.js", script(kitJS))
 	mux.Handle("GET /{$}", render(page{"Toolset", nil, "/", "Network and developer tools. Every tool has a JSON API too, see /api.", "", mods}))
 	mux.HandleFunc("GET /api", func(w http.ResponseWriter, r *http.Request) { Reply(w, mods, nil) })
-	return mux
+	return noIndex(mux)
 }
 
 func component(mod, dir string, ui fs.FS, shared []byte) template.HTML {
@@ -101,6 +101,13 @@ func component(mod, dir string, ui fs.FS, shared []byte) template.HTML {
 		"<style>" + kitCSS + string(shared) + string(css) + "</style>" + string(html) +
 		`<div class="err" role="alert"></div><div class="out" aria-live="polite"></div>` +
 		"</template></" + tag + `><script type="module" src="/ui/` + mod + "/" + dir + `/view.js"></script>`)
+}
+
+func noIndex(h http.Handler) http.Handler {
+	return http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
+		w.Header().Set("X-Robots-Tag", "noindex, nofollow")
+		h.ServeHTTP(w, r)
+	})
 }
 
 func script(js []byte) http.HandlerFunc {
