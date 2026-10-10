@@ -39,6 +39,7 @@ const recommended = [
   'Referrer-Policy',
   'Permissions-Policy',
 ];
+const grades = ['F', 'F', 'F', 'D', 'C', 'B', 'A'];
 const inGroup = (g, h) => groups[g].some((m) => (typeof m === 'string' ? m === h : m(h)));
 
 // Long policy headers are lists; one directive per line reads better.
@@ -53,6 +54,35 @@ const pretty = (k, v) => {
   if (k === 'permissions-policy' || k === 'feature-policy') return v.split(/,\s*/).join('\n');
   return v;
 };
+
+// Set-Cookie arrives one cookie per line; report which protective attributes each one sets.
+function cookieTable(setCookie) {
+  const t = el('table', 'data'),
+    head = el('tr');
+  for (const h of ['Cookie', 'Secure', 'HttpOnly', 'SameSite']) {
+    head.append(el('th', null, h));
+  }
+  t.append(head);
+  for (const line of setCookie.split('\n')) {
+    const [pair, ...attrs] = line.split(';').map((s) => s.trim());
+    const flags = Object.fromEntries(
+      attrs.map((a) => {
+        const [k, val = ''] = a.split('=');
+        return [k.toLowerCase(), val];
+      }),
+    );
+    const flag = (on, text) => el('td', on ? 'ok' : 'bad', text ?? (on ? 'Yes' : 'No'));
+    const tr = el('tr');
+    tr.append(
+      el('td', null, pair.split('=')[0]),
+      flag('secure' in flags),
+      flag('httponly' in flags),
+      flag(!!flags.samesite, flags.samesite || 'Not set'),
+    );
+    t.append(tr);
+  }
+  return t;
+}
 
 customElements.define(
   'tool-headers-inspect',
@@ -78,6 +108,9 @@ customElements.define(
           );
           if (missing.length) body.append(el('p', 'warn', 'Missing: ' + missing.join(', ')));
         }
+        if (g === 'Security' && v.headers['Set-Cookie']) {
+          body.append(el('h2', null, 'Cookies'), cookieTable(v.headers['Set-Cookie']));
+        }
       };
       for (const g of ['All', ...Object.keys(groups)]) {
         const n =
@@ -88,11 +121,19 @@ customElements.define(
         bar.append(b);
       }
       const st = el('span', 'badge s' + String(v.status)[0], v.status);
+      const present = recommended.filter((h) => h in v.headers).length;
+      const grade = grades[present];
+      const gradeEl = el('span');
+      gradeEl.append(
+        el('span', 'badge ' + (grade === 'A' ? 'ok' : grade === 'F' ? 'bad' : 'warn'), grade),
+        ` ${present} of ${recommended.length} recommended security headers`,
+      );
       d.append(
         kv([
           ['Status', st],
           ['Final URL', v.final],
           ['Protocol', v.proto],
+          ['Security grade', gradeEl],
         ]),
         bar,
         body,

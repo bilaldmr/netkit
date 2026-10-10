@@ -5,20 +5,21 @@ Standard library only, no external dependencies.
 
 ## Tools
 
-| Tool             | Path             | What it does                                                         |
-| ---------------- | ---------------- | -------------------------------------------------------------------- |
-| CIDR Calculator  | `/cidr`          | Subnet range, mask, host count, IP-in-range check (IPv4 and IPv6)    |
-| DNS Checker      | `/dns`           | A, AAAA, CNAME, MX, NS, TXT records and propagation across resolvers |
-| Encode / Decode  | `/encode-decode` | Base64, URL encoding, JWT decoding, hashes                           |
-| Generators       | `/generate`      | UUIDs, passwords, timestamp conversion                               |
-| HTTP Headers     | `/headers`       | Response headers grouped into security, permissions, cache and CORS  |
-| IP Checker       | `/ip`            | IP classification, reverse DNS and location                          |
-| JSON Viewer      | `/json`          | Pretty-print JSON from a URL, `?data=` or a POST body                |
-| My IP            | `/myip`          | Your IPv4/IPv6 addresses, user agent and request headers             |
-| Port Checker     | `/ports`         | Open TCP ports of a public host (up to 20 per check)                 |
-| Redirect Checker | `/redirects`     | Redirect chain hop by hop (max 10)                                   |
-| SSL Checker      | `/ssl`           | TLS certificate validity, days left, version and chain               |
-| WHOIS / RDAP     | `/whois`         | Registration data for a domain, IP or ASN                            |
+| Tool             | Path             | What it does                                                            |
+| ---------------- | ---------------- | ----------------------------------------------------------------------- |
+| CIDR Calculator  | `/cidr`          | Subnet range, mask, host count, IP-in-range check (IPv4 and IPv6)       |
+| DNS Checker      | `/dns`           | A, AAAA, CNAME, MX, NS, TXT records, propagation, SPF/DMARC/DKIM checks |
+| Encode / Decode  | `/encode-decode` | Base64, URL encoding, JWT decoding, hashes                              |
+| Generators       | `/generate`      | UUIDs, passwords, timestamp conversion, cron next run times             |
+| HTTP Headers     | `/headers`       | Response headers by group, security grade and cookie flags              |
+| IP Checker       | `/ip`            | IP classification, reverse DNS and location                             |
+| JSON Viewer      | `/json`          | Pretty-print JSON from a URL, `?data=` or a POST body                   |
+| My IP            | `/myip`          | Your IPv4/IPv6 addresses, user agent and request headers                |
+| Port Checker     | `/ports`         | Open TCP ports of a public host (up to 20 per check)                    |
+| Redirect Checker | `/redirects`     | Redirect chain hop by hop (max 10)                                      |
+| Site Files       | `/site-files`    | robots.txt, sitemap.xml, security.txt and llms.txt                      |
+| SSL Checker      | `/ssl`           | TLS certificate validity, days left, version and chain                  |
+| WHOIS / RDAP     | `/whois`         | Registration data for a domain, IP or ASN                               |
 
 `GET /api` lists every module with its endpoints and an example request.
 

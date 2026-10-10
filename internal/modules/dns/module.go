@@ -17,15 +17,17 @@ func New(d platform.Deps) platform.Module {
 	return platform.Module{
 		Name:        "dns",
 		Title:       "DNS Checker",
-		Description: "DNS records (A, AAAA, CNAME, MX, NS, TXT) and propagation across public resolvers",
+		Description: "DNS records (A, AAAA, CNAME, MX, NS, TXT) propagation across public resolvers, and SPF/DMARC/DKIM checks",
 		UI:          ui,
 		Views: []platform.View{
 			{Path: "/dns", Dir: "lookup", Title: "Lookup"},
 			{Path: "/dns/propagation", Dir: "propagation", Title: "Propagation"},
+			{Path: "/dns/email", Dir: "email", Title: "Email security"},
 		},
 		Routes: []platform.Route{
 			{Pattern: "GET /api/dns", Example: "/api/dns?domain=google.com&type=MX&server=1.1.1.1", Handler: h.Lookup},
 			{Pattern: "GET /api/dns/propagation", Example: "/api/dns/propagation?domain=github.com&type=A", Handler: h.Propagation},
+			{Pattern: "GET /api/dns/email", Example: "/api/dns/email?domain=github.com&selector=google", Handler: h.Email},
 		},
 	}
 }
@@ -52,6 +54,12 @@ func (h Handler) Propagation(w http.ResponseWriter, r *http.Request) {
 		return serverResolver(h.Dialer, serverAddr(s.Addr))
 	})
 	platform.Reply(w, p, err)
+}
+
+func (h Handler) Email(w http.ResponseWriter, r *http.Request) {
+	q := r.URL.Query()
+	e, err := h.Svc.Email(r.Context(), q.Get("domain"), q.Get("selector"))
+	platform.Reply(w, e, err)
 }
 
 func serverAddr(s string) string {

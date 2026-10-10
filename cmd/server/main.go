@@ -20,6 +20,7 @@ import (
 	"github.com/enteresanlikk/go-toolkit/internal/modules/myip"
 	"github.com/enteresanlikk/go-toolkit/internal/modules/ports"
 	"github.com/enteresanlikk/go-toolkit/internal/modules/redirects"
+	"github.com/enteresanlikk/go-toolkit/internal/modules/sitefiles"
 	"github.com/enteresanlikk/go-toolkit/internal/modules/ssl"
 	"github.com/enteresanlikk/go-toolkit/internal/modules/whois"
 	"github.com/enteresanlikk/go-toolkit/internal/platform"
@@ -50,6 +51,7 @@ func run(l *slog.Logger, cfg config.Config) error {
 		myip.New(cfg.MyIP),
 		ports.New,
 		redirects.New,
+		sitefiles.New,
 		ssl.New,
 		whois.New,
 	)

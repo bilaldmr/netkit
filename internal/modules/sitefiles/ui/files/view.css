@@ -1,0 +1,13 @@
+pre {
+  max-height: 400px;
+  overflow: auto;
+  margin: var(--space-2) 0;
+  padding: var(--space-3);
+  background: var(--panel-bg);
+  border: 1px solid var(--panel-border);
+  border-radius: var(--radius-md);
+  font-family: var(--font-mono);
+  font-size: var(--text-sm);
+  white-space: pre-wrap;
+  word-break: break-all;
+}

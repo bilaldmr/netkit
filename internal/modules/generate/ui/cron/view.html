@@ -1,0 +1,24 @@
+<form>
+  <label>
+    Expression
+    <input name="expr" placeholder="*/15 9-17 * * MON-FRI or @daily" required />
+  </label>
+  <label class="tz">
+    Timezone
+    <input name="tz" placeholder="UTC" list="tz" />
+  </label>
+  <datalist id="tz">
+    <option>UTC</option>
+    <option>Europe/Istanbul</option>
+    <option>Europe/London</option>
+    <option>Europe/Berlin</option>
+    <option>America/New_York</option>
+    <option>America/Los_Angeles</option>
+    <option>Asia/Tokyo</option>
+  </datalist>
+  <label class="small">
+    Count
+    <input name="count" type="number" min="1" max="50" value="5" />
+  </label>
+  <button>Explain</button>
+</form>
