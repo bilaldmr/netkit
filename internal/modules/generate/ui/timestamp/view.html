@@ -1,9 +1,23 @@
 <form>
-  <label>Value <input name="value" placeholder="1700000000, 1700000000000, 2026-10-10T12:00:00Z (empty = now)"></label>
-  <label class="tz">Timezone <input name="tz" placeholder="Europe/Istanbul" list="tz"></label>
+  <label>
+    Value
+    <input
+      name="value"
+      placeholder="1700000000, 1700000000000, 2026-10-10T12:00:00Z (empty = now)"
+    />
+  </label>
+  <label class="tz">
+    Timezone
+    <input name="tz" placeholder="Europe/Istanbul" list="tz" />
+  </label>
   <datalist id="tz">
-    <option>UTC</option><option>Europe/Istanbul</option><option>Europe/London</option><option>Europe/Berlin</option>
-    <option>America/New_York</option><option>America/Los_Angeles</option><option>Asia/Tokyo</option>
+    <option>UTC</option>
+    <option>Europe/Istanbul</option>
+    <option>Europe/London</option>
+    <option>Europe/Berlin</option>
+    <option>America/New_York</option>
+    <option>America/Los_Angeles</option>
+    <option>Asia/Tokyo</option>
   </datalist>
   <button>Convert</button>
 </form>

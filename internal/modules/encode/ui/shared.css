@@ -1,2 +1,6 @@
-label.full { flex-basis: 100%; }
-label.small { flex: 0 1 140px; }
+label.full {
+  flex-basis: 100%;
+}
+label.small {
+  flex: 0 1 140px;
+}

@@ -1,2 +1,6 @@
-td.records code { display: block; }
-td.status { white-space: nowrap; }
+td.records code {
+  display: block;
+}
+td.status {
+  white-space: nowrap;
+}

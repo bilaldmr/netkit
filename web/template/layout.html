@@ -1,42 +1,65 @@
 <!doctype html>
 <html lang="en">
-<head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="robots" content="noindex, nofollow">
-<title>{{.Title}}{{if .Mod}} · Toolkit{{end}}</title>
-<link rel="stylesheet" href="{{asset "css/tokens.css"}}">
-<link rel="stylesheet" href="{{asset "css/app.css"}}">
-<script src="{{asset "js/app.js"}}" defer></script>
-</head>
-<body>
-<a class="skip" href="#content">Skip to content</a>
-<div class="shell">
-  <aside class="sidebar">
-    <a class="brand" href="/"><span class="brand-mark" aria-hidden="true">T</span>Toolkit</a>
-    <nav aria-label="Tools">
-      <ul>
-        {{range .Mods}}{{if .Views}}<li><a class="nav" href="{{(index .Views 0).Path}}"{{if $.Mod}}{{if eq .Name $.Mod.Name}} aria-current="page"{{end}}{{end}}>{{.Title}}</a></li>
-        {{end}}{{end}}
-      </ul>
-    </nav>
-  </aside>
-  <main id="content">
-    <h1>{{if .Mod}}{{.Mod.Title}}{{else}}{{.Title}}{{end}}</h1>
-    <p class="lead">{{.Description}}</p>
-    {{with .Mod}}{{if gt (len .Views) 1}}
-      <nav class="tabs" aria-label="{{.Title}} views">
-        {{range .Views}}<a href="{{.Path}}"{{if eq .Path $.Path}} aria-current="page"{{end}}>{{.Title}}</a>{{end}}
-      </nav>
-    {{end}}{{end}}
-    {{if .Body}}
-      {{.Body}}
-    {{else}}
-      <div class="cards">
-        {{range .Mods}}{{if .Views}}<a class="card" href="{{(index .Views 0).Path}}"><strong>{{.Title}}</strong><span class="muted">{{.Description}}</span></a>{{end}}{{end}}
-      </div>
-    {{end}}
-  </main>
-</div>
-</body>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="robots" content="noindex, nofollow">
+    <title>{{.Title}}{{if .Mod}} · Toolkit{{end}}</title>
+    <link rel="stylesheet" href="{{asset "css/tokens.css"}}">
+    <link rel="stylesheet" href="{{asset "css/app.css"}}">
+    <script src="{{asset "js/app.js"}}" defer></script>
+  </head>
+  <body>
+    <a class="skip" href="#content">Skip to content</a>
+    <div class="shell">
+      <aside class="sidebar">
+        <a class="brand" href="/">
+          <span class="brand-mark" aria-hidden="true">T</span>
+          Toolkit
+        </a>
+        <nav aria-label="Tools">
+          <ul>
+            {{range .Mods}}
+              {{if .Views}}
+                <li>
+                  <a
+                    class="nav"
+                    href="{{(index .Views 0).Path}}"
+                    {{if $.Mod}}{{if eq .Name $.Mod.Name}}aria-current="page"{{end}}{{end}}
+                  >{{.Title}}</a>
+                </li>
+              {{end}}
+            {{end}}
+          </ul>
+        </nav>
+      </aside>
+      <main id="content">
+        <h1>{{if .Mod}}{{.Mod.Title}}{{else}}{{.Title}}{{end}}</h1>
+        <p class="lead">{{.Description}}</p>
+        {{with .Mod}}
+          {{if gt (len .Views) 1}}
+            <nav class="tabs" aria-label="{{.Title}} views">
+              {{range .Views}}
+                <a href="{{.Path}}"{{if eq .Path $.Path}} aria-current="page"{{end}}>{{.Title}}</a>
+              {{end}}
+            </nav>
+          {{end}}
+        {{end}}
+        {{if .Body}}
+          {{.Body}}
+        {{else}}
+          <div class="cards">
+            {{range .Mods}}
+              {{if .Views}}
+                <a class="card" href="{{(index .Views 0).Path}}">
+                  <strong>{{.Title}}</strong>
+                  <span class="muted">{{.Description}}</span>
+                </a>
+              {{end}}
+            {{end}}
+          </div>
+        {{end}}
+      </main>
+    </div>
+  </body>
 </html>

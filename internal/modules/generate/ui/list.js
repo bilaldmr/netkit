@@ -3,7 +3,8 @@ import { el } from '/static/js/kit.js';
 export function copyList(items) {
   const ul = el('ul', 'list');
   for (const s of items) {
-    const li = el('li'), b = el('button', 'copy secondary', 'Copy');
+    const li = el('li'),
+      b = el('button', 'copy secondary', 'Copy');
     b.type = 'button';
     b.onclick = async () => {
       await navigator.clipboard.writeText(s);

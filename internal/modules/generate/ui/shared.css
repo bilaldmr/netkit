@@ -1,6 +1,27 @@
-label.small { flex: 0 1 110px; }
-label.tz { flex: 0 1 200px; }
-ul.list { list-style: none; padding: 0; margin: 12px 0; }
-ul.list li { display: flex; gap: 12px; align-items: center; padding: 6px 0; border-bottom: 1px solid var(--color-border); }
-ul.list code { flex: 1; font-size: 15px; word-break: break-all; }
-button.copy { padding: 2px 10px; font-size: 13px; }
+label.small {
+  flex: 0 1 110px;
+}
+label.tz {
+  flex: 0 1 200px;
+}
+ul.list {
+  list-style: none;
+  padding: 0;
+  margin: 12px 0;
+}
+ul.list li {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  padding: 6px 0;
+  border-bottom: 1px solid var(--color-border);
+}
+ul.list code {
+  flex: 1;
+  font-size: 15px;
+  word-break: break-all;
+}
+button.copy {
+  padding: 2px 10px;
+  font-size: 13px;
+}

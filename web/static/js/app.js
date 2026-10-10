@@ -1,1 +1,3 @@
-document.querySelector('.sidebar [aria-current]')?.scrollIntoView({ block: 'nearest', inline: 'center' });
+document
+  .querySelector('.sidebar [aria-current]')
+  ?.scrollIntoView({ block: 'nearest', inline: 'center' });
