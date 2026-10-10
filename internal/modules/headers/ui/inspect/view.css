@@ -1,0 +1,2 @@
+.filters { display: flex; flex-wrap: wrap; gap: var(--space-1); margin: var(--space-3) 0; }
+.filters button[aria-pressed="false"] { background: var(--button-secondary-bg); color: var(--button-secondary-text); border-color: var(--input-border); font-weight: var(--weight-medium); }

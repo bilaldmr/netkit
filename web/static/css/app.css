@@ -118,7 +118,7 @@ h1 { margin: 0 0 var(--space-1); font-size: var(--text-xl); font-weight: var(--w
 .card strong { display: block; margin-bottom: var(--space-1); }
 
 @media (max-width: 800px) {
-  .shell { grid-template-columns: 1fr; }
+  .shell { grid-template-columns: 1fr; grid-template-rows: auto 1fr; }
   .sidebar {
     position: static;
     height: auto;

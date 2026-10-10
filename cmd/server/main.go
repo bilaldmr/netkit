@@ -14,6 +14,7 @@ import (
 	"github.com/enteresanlikk/go-toolkit/internal/modules/dns"
 	"github.com/enteresanlikk/go-toolkit/internal/modules/encode"
 	"github.com/enteresanlikk/go-toolkit/internal/modules/generate"
+	"github.com/enteresanlikk/go-toolkit/internal/modules/headers"
 	"github.com/enteresanlikk/go-toolkit/internal/modules/ipcheck"
 	"github.com/enteresanlikk/go-toolkit/internal/modules/jsonview"
 	"github.com/enteresanlikk/go-toolkit/internal/modules/myip"
@@ -43,6 +44,7 @@ func run(l *slog.Logger, cfg config.Config) error {
 		dns.New,
 		encode.New,
 		generate.New,
+		headers.New,
 		ipcheck.New(cfg.IPCheck),
 		jsonview.New,
 		myip.New(cfg.MyIP),
