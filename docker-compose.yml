@@ -1,8 +1,8 @@
-name: go-toolkit
+name: netkit
 
 services:
   server:
-    container_name: go-toolkit-server
+    container_name: netkit-server
     build:
       context: .
       dockerfile: Dockerfile

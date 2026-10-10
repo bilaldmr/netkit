@@ -8,7 +8,7 @@ import (
 	"sort"
 	"time"
 
-	"github.com/enteresanlikk/go-toolkit/web"
+	"github.com/enteresanlikk/netkit/web"
 )
 
 type Module struct {
@@ -85,7 +85,7 @@ func NewServer(d Deps, factories ...Factory) http.Handler {
 		}
 	}
 	mux.Handle("GET "+web.StaticPrefix, http.StripPrefix(web.StaticPrefix, http.FileServerFS(web.StaticFS)))
-	mux.Handle("GET /{$}", render(page{"Toolkit", nil, "/", "Network and developer tools. Every tool has a JSON API too, see /api.", "", mods}))
+	mux.Handle("GET /{$}", render(page{"Netkit", nil, "/", "Network and developer tools. Every tool has a JSON API too, see /api.", "", mods}))
 	mux.HandleFunc("GET /api", func(w http.ResponseWriter, r *http.Request) { Reply(w, mods, nil) })
 	return defaultHeaders(mux)
 }

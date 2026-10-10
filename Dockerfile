@@ -25,6 +25,6 @@ USER nonroot
 
 ENTRYPOINT ["/app/app"]
 
-LABEL org.opencontainers.image.title="go-toolkit" \
+LABEL org.opencontainers.image.title="netkit" \
     org.opencontainers.image.description="Network and developer toolkit: IP, DNS, redirects, SSL and JSON tools" \
-    org.opencontainers.image.source="https://github.com/enteresanlikk/go-toolkit"
+    org.opencontainers.image.source="https://github.com/enteresanlikk/netkit"

@@ -1,4 +1,4 @@
-# go-toolkit
+# netkit
 
 Network and developer tools in a single Go binary. Every tool has a web UI and a JSON API.
 Standard library only, no external dependencies.

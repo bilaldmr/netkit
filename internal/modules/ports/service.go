@@ -13,7 +13,7 @@ import (
 	"syscall"
 	"time"
 
-	"github.com/enteresanlikk/go-toolkit/internal/platform"
+	"github.com/enteresanlikk/netkit/internal/platform"
 )
 
 const MaxPorts = 20

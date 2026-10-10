@@ -14,7 +14,7 @@ permissions:
 
 env:
   REGISTRY: ghcr.io
-  IMAGE_NAME: go-toolkit
+  IMAGE_NAME: netkit
 
 jobs:
   verify:
@@ -118,6 +118,6 @@ jobs:
 
             export VERSION="${{ env.IMAGE_TAG }}"
 
-            ./scripts/deploy.sh service go-toolkit
+            ./scripts/deploy.sh service netkit
 
             docker stack services personal-${{ env.ENVIRONMENT }}

@@ -6,7 +6,7 @@ import (
 	"strconv"
 	"time"
 
-	"github.com/enteresanlikk/go-toolkit/internal/platform"
+	"github.com/enteresanlikk/netkit/internal/platform"
 )
 
 //go:embed ui
