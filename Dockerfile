@@ -27,4 +27,4 @@ ENTRYPOINT ["/app/app"]
 
 LABEL org.opencontainers.image.title="netkit" \
     org.opencontainers.image.description="Network and developer toolkit: IP, DNS, redirects, SSL and JSON tools" \
-    org.opencontainers.image.source="https://github.com/enteresanlikk/netkit"
+    org.opencontainers.image.source="https://github.com/bilaldmr/netkit"

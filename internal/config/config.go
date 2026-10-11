@@ -3,10 +3,10 @@ package config
 import (
 	"os"
 
-	"github.com/enteresanlikk/netkit/internal/logger"
-	"github.com/enteresanlikk/netkit/internal/modules/ipcheck"
-	"github.com/enteresanlikk/netkit/internal/modules/myip"
-	"github.com/enteresanlikk/netkit/internal/server"
+	"github.com/bilaldmr/netkit/internal/logger"
+	"github.com/bilaldmr/netkit/internal/modules/ipcheck"
+	"github.com/bilaldmr/netkit/internal/modules/myip"
+	"github.com/bilaldmr/netkit/internal/server"
 )
 
 type Config struct {

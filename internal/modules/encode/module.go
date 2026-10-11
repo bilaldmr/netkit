@@ -5,7 +5,7 @@ import (
 	"net/http"
 	"time"
 
-	"github.com/enteresanlikk/netkit/internal/platform"
+	"github.com/bilaldmr/netkit/internal/platform"
 )
 
 //go:embed ui

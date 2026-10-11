@@ -8,7 +8,7 @@ import (
 	"sort"
 	"time"
 
-	"github.com/enteresanlikk/netkit/web"
+	"github.com/bilaldmr/netkit/web"
 )
 
 type Module struct {

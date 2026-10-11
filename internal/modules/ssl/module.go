@@ -7,7 +7,7 @@ import (
 	"net"
 	"net/http"
 
-	"github.com/enteresanlikk/netkit/internal/platform"
+	"github.com/bilaldmr/netkit/internal/platform"
 )
 
 type tlsProber struct{ dialer *net.Dialer }
