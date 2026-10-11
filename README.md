@@ -19,7 +19,7 @@ Standard library only, no external dependencies.
 | Redirect Checker | `/redirects`     | Redirect chain hop by hop (max 10)                                      |
 | Site Files       | `/site-files`    | robots.txt, sitemap.xml, security.txt and llms.txt                      |
 | SSL Checker      | `/ssl`           | Certificate check, supported TLS versions and ciphers, two-host compare |
-.| Structured Data  | `/schema`        | JSON-LD blocks of a page validated against the schema.org vocabulary    |
+| Structured Data  | `/schema`        | JSON-LD blocks of a page validated against the schema.org vocabulary    |
 | WHOIS / RDAP     | `/whois`         | Registration data for a domain, IP or ASN                               |
 
 `GET /api` lists every module with its endpoints and an example request.
