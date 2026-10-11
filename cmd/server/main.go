@@ -20,6 +20,7 @@ import (
 	"github.com/enteresanlikk/netkit/internal/modules/myip"
 	"github.com/enteresanlikk/netkit/internal/modules/ports"
 	"github.com/enteresanlikk/netkit/internal/modules/redirects"
+	"github.com/enteresanlikk/netkit/internal/modules/schema"
 	"github.com/enteresanlikk/netkit/internal/modules/sitefiles"
 	"github.com/enteresanlikk/netkit/internal/modules/ssl"
 	"github.com/enteresanlikk/netkit/internal/modules/whois"
@@ -51,6 +52,7 @@ func run(l *slog.Logger, cfg config.Config) error {
 		myip.New(cfg.MyIP),
 		ports.New,
 		redirects.New,
+		schema.New,
 		sitefiles.New,
 		ssl.New,
 		whois.New,
